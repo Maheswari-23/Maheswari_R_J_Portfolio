@@ -6,6 +6,7 @@ import cyber from './assets/cyber.jpg';
 import sn from './assets/snplastics.jpg';
 import noti from './assets/noti.jpg';
 import lurn from './assets/lurnn.jpg';
+import med from './assets/med.jpg';
 
 // Icons import
 import { 
@@ -248,7 +249,7 @@ export default function Portfolio() {
         type: "Counterfeit Medicine Detection",
         description: "Built a web app for counterfeit medicine detection using QR verification. Achieved 94.8% accuracy in a 24-hour hackathon.",
         tech: ["Firebase", "QR Tech", "Flask", "JavaScript"],
-        image: "/api/placeholder/400/250",
+        image: med,
       },
       {
         title: "Apex",
@@ -488,7 +489,7 @@ export default function Portfolio() {
                 <FaLinkedin style={{ marginRight: '8px' }} />
                 LinkedIn
               </a>
-              <a href="https://github.com/Maheswari-05" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/Maheswari-23" target="_blank" rel="noopener noreferrer">
                 <FaGithub style={{ marginRight: '8px' }} />
                 GitHub
               </a>
