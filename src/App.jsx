@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
+
+// --- IMAGES ---
+import profilePhoto from './assets/profile.jpg'; 
 import yrcPhoto from './assets/yrcc.jpg';
 import gdsc from './assets/gdscc.jpg';
 import cyber from './assets/cyber.jpg';
@@ -8,15 +11,14 @@ import noti from './assets/noti.jpg';
 import lurn from './assets/lurnn.jpg';
 import med from './assets/med.jpg';
 
-// Icons import
+// --- ICONS ---
 import { 
-  FaFigma, FaMobile, FaJs, FaJava, FaDatabase, 
-  FaMicrosoft, FaGitAlt, FaGithub, FaAward, FaCrown, 
-  FaPalette, FaCode, FaLinkedin, FaEnvelope, FaChevronLeft, FaChevronRight,
-  FaLaptopCode, FaPaintBrush, FaVideo, FaCodeBranch, FaCloud, FaRocket
+  FaFigma, FaMobile, FaJs, FaJava, FaGitAlt, FaGithub, FaAward, FaCrown, 
+  FaPalette, FaCode, FaLinkedin, FaEnvelope, FaLaptopCode, FaPaintBrush, 
+  FaVideo, FaRocket, FaPhone, FaGoogleDrive 
 } from 'react-icons/fa';
 import { 
-  SiMysql, SiAdobephotoshop, SiAdobe, SiCanva,  
+  SiMysql, SiAdobephotoshop, SiCanva,  
 } from 'react-icons/si';
 import { VscAzure } from "react-icons/vsc";
 
@@ -51,7 +53,7 @@ const useTypewriter = (words, options = {}) => {
   return text;
 };
 
-// Intersection Observer hook for animations
+// Intersection Observer hook
 const useIntersectionObserver = (options) => {
     const [elements, setElements] = useState([]);
     const observer = useRef(null);
@@ -78,75 +80,16 @@ const useIntersectionObserver = (options) => {
     return setElements;
 };
 
-// Skills Carousel Component
-const SkillsCarousel = ({ skills }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const carouselRef = useRef(null);
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === skills.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? skills.length - 1 : prevIndex - 1
-    );
-  };
-
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
-
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 2500); // Faster auto-play
-
-    return () => clearInterval(interval);
-  }, [currentIndex, isAutoPlaying]);
-
+// Infinite Scrolling Skills Component
+const SkillsMarquee = ({ skills }) => {
   return (
-    <div 
-      className="skills-carousel"
-      onMouseEnter={() => setIsAutoPlaying(false)}
-      onMouseLeave={() => setIsAutoPlaying(true)}
-      ref={carouselRef}
-    >
-      <div className="carousel-container">
-        <div 
-          className="carousel-track"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-        >
-          {skills.map((skill, index) => (
-            <div key={index} className="carousel-slide">
-              <div className="skill-card-carousel">
-                <div className="skill-icon-carousel">{skill.icon}</div>
-                <h4>{skill.name}</h4>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      
-      <button className="carousel-btn carousel-btn-prev" onClick={prevSlide}>
-        <FaChevronLeft />
-      </button>
-      <button className="carousel-btn carousel-btn-next" onClick={nextSlide}>
-        <FaChevronRight />
-      </button>
-      
-      <div className="carousel-indicators">
-        {skills.map((_, index) => (
-          <button
-            key={index}
-            className={`indicator ${index === currentIndex ? 'active' : ''}`}
-            onClick={() => goToSlide(index)}
-          />
+    <div className="skills-marquee-container">
+      <div className="skills-track">
+        {skills.concat(skills).map((skill, index) => (
+          <div key={index} className="skill-card-item">
+            <div className="skill-icon-display">{skill.icon}</div>
+            <h4>{skill.name}</h4>
+          </div>
         ))}
       </div>
     </div>
@@ -158,13 +101,17 @@ export default function Portfolio() {
   const typedText = useTypewriter(['Developer', 'Creator', 'Innovator']);
   const setObservedElements = useIntersectionObserver({ threshold: 0.1 });
 
+  // REPLACE THIS WITH YOUR ACTUAL DRIVE LINK
+  const driveLink = "https://drive.google.com/drive/folders/1f7XaPPg3rCeH8xtG3pjsQykBZFb6469J";
+
   useEffect(() => {
     const handleScroll = () => {
         const sections = document.querySelectorAll('section[id]');
         let currentSection = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            if (window.scrollY >= sectionTop - 100) {
+            // Adjusted offset for scroll snap accuracy
+            if (window.scrollY >= sectionTop - 200) {
                 currentSection = section.getAttribute('id');
             }
         });
@@ -275,13 +222,13 @@ export default function Portfolio() {
 
   const accomplishments = [
     { 
-      title: "UI/UX Competition Winner", 
+      title: "UI/UX Winner", 
       detail: "1st Place at Cryptrix'25, St. Joseph's College of Engineering",
       icon: <FaAward />,
       gradient: "gradient-1"
     },
     { 
-      title: "Paper Presentation Winner", 
+      title: "Paper Presentation", 
       detail: "Recognized at Zenith'25, Jeppiaar Engineering College",
       icon: <FaCode />,
       gradient: "gradient-2"
@@ -309,7 +256,12 @@ export default function Portfolio() {
     <div className="portfolio">
       <nav className="navbar">
         <div className="nav-container">
-          <h1 className="logo">Maheswari R J</h1>
+          {/* LOGO AREA: Name + Tagline */}
+          <div className="logo-container">
+            <h1 className="logo">Maheswari R J</h1>
+            <span className="logo-tagline">Building User-First Digital Experiences</span>
+          </div>
+          
           <div className="nav-links">
             {navigation.map((item) => (
               <a
@@ -328,29 +280,50 @@ export default function Portfolio() {
         </div>
       </nav>
 
-      <section id="about" className="hero">
-        <div className="hero-content">
-          <div className="hero-badge animate-on-scroll">Available for Opportunities</div>
-          <h2 className="hero-title animate-on-scroll">
-            Designer & <span className="gradient-text">{typedText}</span>
-          </h2>
-          <p className="hero-subtitle animate-on-scroll">
-            Final-year Computer Science student building clean, responsive, and user-first digital experiences.
-          </p>
-          <div className="contact-links animate-on-scroll">
-            <a href="mailto:220701155@rajalakshmi.edu.in" className="contact-btn primary">
-              <FaEnvelope style={{ marginRight: '8px' }} />
-              <span>Get in Touch</span>
-            </a>
-            <a href="https://www.linkedin.com/in/maheswari-rj" target="_blank" rel="noopener noreferrer" className="contact-btn secondary">
-              <FaLinkedin style={{ marginRight: '8px' }} />
-              <span>LinkedIn</span>
-            </a>
+      {/* HERO SECTION */}
+      <section id="about" className="hero section-snap">
+        <div className="container hero-container">
+          
+          {/* PHOTO LEFT */}
+          <div className="hero-image-wrapper animate-on-scroll float-animation">
+             <div className="hero-image-inner">
+               <img src={profilePhoto} alt="Maheswari R J" />
+             </div>
+          </div>
+
+          {/* TEXT RIGHT */}
+          <div className="hero-content-wrapper">
+            <div className="hero-badge animate-on-scroll">Available for Opportunities</div>
+            <h2 className="hero-title animate-on-scroll">
+              Designer & <span className="gradient-text">{typedText}</span>
+            </h2>
+            <p className="hero-subtitle animate-on-scroll">
+              Final-year Computer Science student building clean, responsive, and user-first digital experiences.
+            </p>
+            
+            <div className="contact-links animate-on-scroll">
+              <a href="mailto:220701155@rajalakshmi.edu.in" className="contact-btn">
+                <FaEnvelope style={{ marginRight: '8px' }} />
+                <span>Email</span>
+              </a>
+              <a href="tel:+919940134213" className="contact-btn">
+                 <FaPhone style={{ marginRight: '8px' }} />
+                 <span>9940134213</span>
+              </a>
+              <a href="https://www.linkedin.com/in/maheswari-rj" target="_blank" rel="noopener noreferrer" className="contact-btn">
+                <FaLinkedin style={{ marginRight: '8px' }} />
+                <span>LinkedIn</span>
+              </a>
+              <a href={driveLink} target="_blank" rel="noopener noreferrer" className="contact-btn">
+                <FaGoogleDrive style={{ marginRight: '8px' }} />
+                <span>Design Works</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="internships" className="section dark">
+      <section id="internships" className="section dark section-snap">
         <div className="container">
           <div className="section-header animate-on-scroll">
             <h2 className="section-title">Internships</h2>
@@ -379,7 +352,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="experience" className="section">
+      <section id="experience" className="section section-snap">
         <div className="container">
           <div className="section-header animate-on-scroll">
             <h2 className="section-title">Design Experience</h2>
@@ -413,7 +386,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="projects" className="section dark">
+      <section id="projects" className="section dark section-snap">
         <div className="container">
           <div className="section-header animate-on-scroll">
             <h2 className="section-title">Featured Projects</h2>
@@ -441,19 +414,17 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="skills" className="section">
+      <section id="skills" className="section section-snap">
         <div className="container">
           <div className="section-header animate-on-scroll">
             <h2 className="section-title">Skills & Tools</h2>
             <div className="section-line"></div>
           </div>
-          <div className="skills-carousel-container">
-            <SkillsCarousel skills={skills} />
-          </div>
+          <SkillsMarquee skills={skills} />
         </div>
       </section>
 
-      <section id="accomplishments" className="section accomplishments-section">
+      <section id="accomplishments" className="section accomplishments-section section-snap">
         <div className="container">
           <div className="section-header animate-on-scroll">
             <h2 className="section-title">Accomplishments</h2>
@@ -476,7 +447,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <footer className="footer">
+      <footer className="footer section-snap">
         <div className="container">
           <div className="footer-content">
             <h2>Let's Create Something Amazing</h2>
@@ -484,6 +455,10 @@ export default function Portfolio() {
               <a href="mailto:220701155@rajalakshmi.edu.in">
                 <FaEnvelope style={{ marginRight: '8px' }} />
                 Email
+              </a>
+               <a href="tel:+919940134213">
+                 <FaPhone style={{ marginRight: '8px' }} />
+                 9940134213
               </a>
               <a href="https://www.linkedin.com/in/maheswari-rj" target="_blank" rel="noopener noreferrer">
                 <FaLinkedin style={{ marginRight: '8px' }} />
