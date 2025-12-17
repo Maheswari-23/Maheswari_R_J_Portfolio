@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
 // --- IMAGES ---
-import profilePhoto from './assets/profile.jpg'; 
+import profilePhoto from './assets/proff.jpg'; 
 import yrcPhoto from './assets/yrcc.jpg';
 import gdsc from './assets/gdscc.jpg';
 import cyber from './assets/cyber.jpg';

@@ -196,6 +196,8 @@ body {
 .hero-image-inner {
   width: 250px; 
   height: 350px;
+  max-width: 85vw; /* Keeps it inside small screens */
+  aspect-ratio: 4 / 5;
   border-radius: 35px; /* Rounded Square */
   border: 5px solid white;
   box-shadow: var(--shadow-hover);
