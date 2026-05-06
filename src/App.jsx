@@ -16,7 +16,7 @@ import {
   FaFigma, FaMobile, FaJs, FaJava, FaGitAlt, FaGithub, FaAward, FaCrown, 
   FaPalette, FaCode, FaLinkedin, FaEnvelope, FaLaptopCode, FaPaintBrush, 
   FaVideo, FaRocket, FaPhone, FaGoogleDrive,
-  FaGraduationCap, FaBook
+  FaGraduationCap, FaBook, FaDownload
 } from 'react-icons/fa';
 import { 
   SiMysql, SiAdobephotoshop, SiCanva,  
@@ -308,8 +308,9 @@ export default function Portfolio() {
           </div>
 
           <div className="nav-actions">
-            <a href="/resume.pdf" download className="nav-resume-btn">
-              Resume
+            <a href="/resume.pdf" download="Maheswari_RJ_Resume.pdf" className="nav-resume-btn">
+              <FaDownload style={{ marginRight: '8px', fontSize: '0.8rem' }} />
+              <span>Resume</span>
             </a>
           </div>
         </div>

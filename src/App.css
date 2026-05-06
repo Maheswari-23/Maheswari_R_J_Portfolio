@@ -161,19 +161,28 @@ body {
 .nav-resume-btn {
   background: var(--primary-color);
   color: white;
-  padding: 0.7rem 1.5rem;
+  padding: 0.7rem 1.6rem;
   border-radius: 50px;
   font-weight: 600;
   font-size: 0.85rem;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  align-items: center;
   box-shadow: 0 4px 15px rgba(60, 21, 59, 0.2);
+  border: 1px solid transparent;
 }
 
 .nav-resume-btn:hover {
-  background: var(--secondary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(60, 21, 59, 0.3);
+  background: var(--bg-light);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(60, 21, 59, 0.3);
+}
+
+.nav-resume-btn:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 /* HERO SECTION */
