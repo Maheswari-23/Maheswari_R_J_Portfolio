@@ -317,6 +317,7 @@ export default function Portfolio() {
 
       {/* HERO SECTION */}
       <section id="about" className="hero section-snap">
+        <div className="hero-background-grid"></div>
         <div className="container hero-container">
 
           {/* TEXT LEFT */}
@@ -326,7 +327,7 @@ export default function Portfolio() {
               Designer &amp; <span className="gradient-text">{typedText}</span>
             </h2>
             <p className="hero-subtitle animate-on-scroll">
-              Final-year Computer Science student building clean, responsive, and user-first digital experiences.
+              I'm a final-year Computer Science student who believes the best products aren't just built—they are crafted. I bridge the gap between human-centric design &amp; powerful code.
             </p>
 
             <div className="contact-links animate-on-scroll">
@@ -353,6 +354,7 @@ export default function Portfolio() {
           <div className="hero-image-wrapper animate-on-scroll">
             <div className="hero-blob hero-blob-1"></div>
             <div className="hero-blob hero-blob-2"></div>
+            <div className="hero-blob hero-blob-3"></div>
             <div className="polaroid-frame">
               <div className="polaroid-photo">
                 <img src={profilePhoto} alt="Maheswari R J" />
