@@ -15,7 +15,8 @@ import med from './assets/med.jpg';
 import { 
   FaFigma, FaMobile, FaJs, FaJava, FaGitAlt, FaGithub, FaAward, FaCrown, 
   FaPalette, FaCode, FaLinkedin, FaEnvelope, FaLaptopCode, FaPaintBrush, 
-  FaVideo, FaRocket, FaPhone, FaGoogleDrive 
+  FaVideo, FaRocket, FaPhone, FaGoogleDrive,
+  FaGraduationCap, FaBook
 } from 'react-icons/fa';
 import { 
   SiMysql, SiAdobephotoshop, SiCanva,  
@@ -122,11 +123,38 @@ export default function Portfolio() {
   }, []);
 
   useEffect(() => {
-    const elements = document.querySelectorAll('.animate-on-scroll');
+    const elements = document.querySelectorAll('.animate-on-scroll, .edu-timeline-item');
     setObservedElements(Array.from(elements));
   }, [setObservedElements]);
 
-  const navigation = ['About', 'Internships', 'Experience', 'Projects', 'Skills', 'Accomplishments'];
+  const navigation = ['About', 'Education', 'Internships', 'Experience', 'Projects', 'Skills', 'Accomplishments'];
+
+  const educationJourney = [
+    {
+      year: '2022 – 2026',
+      title: 'B.E. Computer Science Engineering',
+      score: 'CGPA: 8.79',
+      org: 'Rajalakshmi Engineering College',
+      description: 'Building a strong foundation in software engineering while exploring human-centric design and AI.',
+      icon: <FaGraduationCap />,
+    },
+    {
+      year: '2022',
+      title: 'HSC — 12th Grade',
+      score: '96%',
+      org: 'New Prince Matriculation Higher Secondary School',
+      description: 'Completed Higher Secondary Certificate with 96%, specialising in Science and Mathematics.',
+      icon: <FaBook />,
+    },
+    {
+      year: '2020',
+      title: 'SSLC — 10th Grade',
+      score: '93%',
+      org: 'New Prince Matriculation Higher Secondary School',
+      description: 'Completed SSLC with 93%, building a solid academic foundation.',
+      icon: <FaBook />,
+    }
+  ];
 
   const internships = [
     {
@@ -283,32 +311,25 @@ export default function Portfolio() {
       {/* HERO SECTION */}
       <section id="about" className="hero section-snap">
         <div className="container hero-container">
-          
-          {/* PHOTO LEFT */}
-          <div className="hero-image-wrapper animate-on-scroll float-animation">
-             <div className="hero-image-inner">
-               <img src={profilePhoto} alt="Maheswari R J" />
-             </div>
-          </div>
 
-          {/* TEXT RIGHT */}
+          {/* TEXT LEFT */}
           <div className="hero-content-wrapper">
             <div className="hero-badge animate-on-scroll">Available for Opportunities</div>
             <h2 className="hero-title animate-on-scroll">
-              Designer & <span className="gradient-text">{typedText}</span>
+              Designer &amp; <span className="gradient-text">{typedText}</span>
             </h2>
             <p className="hero-subtitle animate-on-scroll">
               Final-year Computer Science student building clean, responsive, and user-first digital experiences.
             </p>
-            
+
             <div className="contact-links animate-on-scroll">
               <a href="mailto:220701155@rajalakshmi.edu.in" className="contact-btn">
                 <FaEnvelope style={{ marginRight: '8px' }} />
                 <span>Email</span>
               </a>
               <a href="tel:+919940134213" className="contact-btn">
-                 <FaPhone style={{ marginRight: '8px' }} />
-                 <span>9940134213</span>
+                <FaPhone style={{ marginRight: '8px' }} />
+                <span>9940134213</span>
               </a>
               <a href="https://www.linkedin.com/in/maheswari-rj" target="_blank" rel="noopener noreferrer" className="contact-btn">
                 <FaLinkedin style={{ marginRight: '8px' }} />
@@ -319,6 +340,46 @@ export default function Portfolio() {
                 <span>Design Works</span>
               </a>
             </div>
+          </div>
+
+          {/* PHOTO RIGHT — Polaroid style */}
+          <div className="hero-image-wrapper animate-on-scroll">
+            <div className="hero-blob hero-blob-1"></div>
+            <div className="hero-blob hero-blob-2"></div>
+            <div className="polaroid-frame">
+              <div className="polaroid-photo">
+                <img src={profilePhoto} alt="Maheswari R J" />
+              </div>
+              <p className="polaroid-label">Designer / Dev / Thinker</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* EDUCATION SECTION */}
+      <section id="education" className="section edu-section section-snap">
+        <div className="container">
+          <div className="section-header animate-on-scroll">
+            <h2 className="section-title">Education</h2>
+            <div className="section-line"></div>
+            <p className="section-subtitle">My academic journey — from school to engineering.</p>
+          </div>
+
+          <div className="edu-timeline">
+            <div className="edu-timeline-line"></div>
+            {educationJourney.map((item, index) => (
+              <div key={index} className={`edu-timeline-item ${index % 2 === 0 ? 'edu-left' : 'edu-right'} animate-on-scroll`}>
+                <div className="edu-dot">{item.icon}</div>
+                <div className="edu-card">
+                  <span className="edu-year">{item.year}</span>
+                  <h3 className="edu-title">{item.title}</h3>
+                  <span className="edu-score">{item.score}</span>
+                  <h4 className="edu-org">{item.org}</h4>
+                  <p className="edu-desc">{item.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
