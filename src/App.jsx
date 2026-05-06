@@ -308,7 +308,7 @@ export default function Portfolio() {
           </div>
 
           <div className="nav-actions">
-            <a href="/resume.pdf" download="Maheswari_RJ_Resume.pdf" className="nav-resume-btn">
+            <a href="./resume.pdf" download="Maheswari_RJ_Resume.pdf" className="nav-resume-btn">
               <FaDownload style={{ marginRight: '8px', fontSize: '0.8rem' }} />
               <span>Resume</span>
             </a>
