@@ -225,12 +225,12 @@ body {
 }
 
 .hero-title {
-  font-size: 3.8rem;
+  font-size: 4.2rem;
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   letter-spacing: -2px;
   line-height: 1.1;
-  white-space: nowrap; /* Tries to keep title on one line if space permits */
+  white-space: nowrap; 
 }
 
 .gradient-text {
@@ -241,10 +241,10 @@ body {
 }
 
 .hero-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   color: var(--text-secondary);
-  margin-bottom: 2.5rem;
-  max-width: 650px;
+  margin-bottom: 3rem;
+  max-width: 750px;
 }
 
 /* --- BUTTON STYLES (UNIFORM BLACK BORDER) --- */
@@ -810,8 +810,8 @@ body {
 }
 
 .polaroid-photo {
-  width: 250px;
-  height: 280px;
+  width: 280px;
+  height: 320px;
   overflow: hidden;
   border: 1px solid rgba(0,0,0,0.05);
 }
@@ -824,14 +824,14 @@ body {
 
 .polaroid-label {
   position: absolute;
-  bottom: 0.8rem;
+  bottom: 1rem;
   width: 100%;
   text-align: center;
   left: 0;
   font-family: 'Outfit', sans-serif;
   font-weight: 600;
   color: #333;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
@@ -912,10 +912,10 @@ body {
 }
 
 .edu-card {
-  width: 45%;
+  width: 46%;
   background: white;
-  padding: 2rem;
-  border-radius: 16px;
+  padding: 2.5rem;
+  border-radius: 20px;
   box-shadow: var(--shadow);
   border: 1px solid var(--border-color);
   position: relative;
@@ -936,29 +936,29 @@ body {
 }
 
 .edu-title {
-  font-size: 1.2rem;
-  margin-bottom: 0.25rem;
+  font-size: 1.45rem;
+  margin-bottom: 0.4rem;
 }
 
 .edu-score {
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 700;
   background: var(--gradient-light);
   color: white;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-  margin-bottom: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  margin-bottom: 0.6rem;
 }
 
 .edu-org {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--secondary-color);
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 .edu-desc {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.6;
 }
