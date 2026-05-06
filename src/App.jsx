@@ -99,6 +99,7 @@ const SkillsMarquee = ({ skills }) => {
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('about');
+  const [scrolled, setScrolled] = useState(false);
   const typedText = useTypewriter(['Developer', 'Creator', 'Innovator']);
   const setObservedElements = useIntersectionObserver({ threshold: 0.1 });
 
@@ -107,11 +108,11 @@ export default function Portfolio() {
 
   useEffect(() => {
     const handleScroll = () => {
+        setScrolled(window.scrollY > 50);
         const sections = document.querySelectorAll('section[id]');
         let currentSection = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            // Adjusted offset for scroll snap accuracy
             if (window.scrollY >= sectionTop - 200) {
                 currentSection = section.getAttribute('id');
             }
@@ -282,10 +283,10 @@ export default function Portfolio() {
 
   return (
     <div className="portfolio">
-      <nav className="navbar">
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           {/* LOGO AREA: Name + Tagline */}
-          <div className="logo-container">
+          <div className="logo-container" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{cursor: 'pointer'}}>
             <h1 className="logo">Maheswari R J</h1>
             <span className="logo-tagline">Building User-First Digital Experiences</span>
           </div>
@@ -304,6 +305,12 @@ export default function Portfolio() {
                 {item}
               </a>
             ))}
+          </div>
+
+          <div className="nav-actions">
+            <a href="/resume.pdf" download className="nav-resume-btn">
+              Resume
+            </a>
           </div>
         </div>
       </nav>
