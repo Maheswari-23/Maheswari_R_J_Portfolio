@@ -786,6 +786,190 @@ body {
   font-size: 0.9rem;
 }
 
+
+/* --- THE POLAROID (HERO) --- */
+.polaroid-frame {
+  background: white;
+  padding: 1rem 1rem 2.5rem 1rem;
+  border-radius: 2px;
+  box-shadow: 
+    0 1px 1px rgba(0,0,0,0.1), 
+    0 2px 2px rgba(0,0,0,0.1), 
+    0 4px 4px rgba(0,0,0,0.1), 
+    0 8px 8px rgba(0,0,0,0.1);
+  transform: rotate(3deg);
+  position: relative;
+  z-index: 2;
+  transition: all 0.5s ease;
+  animation: float 6s ease-in-out infinite;
+}
+
+.polaroid-frame:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.polaroid-photo {
+  width: 250px;
+  height: 280px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.polaroid-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.polaroid-label {
+  position: absolute;
+  bottom: 0.8rem;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-blob-1 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(219,48,105,0.4) 0%, transparent 70%);
+  top: -20px;
+  left: -50px;
+}
+
+.hero-blob-2 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(139,30,63,0.3) 0%, transparent 70%);
+  bottom: -10px;
+  right: -20px;
+}
+
+/* --- THE EDUCATION TIMELINE --- */
+.edu-section {
+  padding: 6rem 0;
+  background: var(--bg-light);
+}
+
+.edu-timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 4rem auto 0;
+}
+
+.edu-timeline-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: rgba(0,0,0,0.05);
+}
+
+.edu-timeline-item {
+  position: relative;
+  width: 100%;
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edu-timeline-item.edu-left {
+  justify-content: flex-start;
+}
+
+.edu-dot {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: white;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  box-shadow: 0 0 0 5px white;
+}
+
+.edu-card {
+  width: 45%;
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.edu-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+}
+
+.edu-year {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.edu-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.edu-score {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--gradient-light);
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.edu-org {
+  font-size: 0.95rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.edu-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .edu-timeline-line { left: 20px; transform: none; }
+  .edu-dot { left: 20px; transform: translateX(-50%); }
+  .edu-timeline-item { justify-content: flex-start; padding-left: 50px; }
+  .edu-card { width: 100%; }
+}
+
 /* RESPONSIVE DESIGN */
 @media (max-width: 1200px) {
   .container {
